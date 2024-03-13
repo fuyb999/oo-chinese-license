@@ -12,7 +12,7 @@ RUN apt-get update \
 # find /var/www/onlyoffice/documentserver/sdkjs-plugins -name "config.json" -type f -exec sh -c "jq -r '.name, .guid' {} | sed -e 's/^asc.//' | tr '\n' ' '; echo ''" \;
 ADD delete-sdkjs-plugins.sh .
 RUN chmod +x delete-sdkjs-plugins.sh \
-    && ./delete-sdkjs-plugins.sh \
+    && sh delete-sdkjs-plugins.sh \
     && rm -rf delete-sdkjs-plugins.sh
 
 # 移除字体

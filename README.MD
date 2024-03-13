@@ -10,7 +10,7 @@
 
 ## clone
 ```shell
-git clone --recursive git@github.com:fuyb999/oo-chinese-license.git
+git clone --recursive https://github.com/fuyb999/oo-chinese-license.git
 ```
 
 ## build

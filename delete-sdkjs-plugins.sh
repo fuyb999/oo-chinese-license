@@ -4,7 +4,8 @@
 plugins=$(find /var/www/onlyoffice/documentserver/sdkjs-plugins -name "config.json" -exec sh -c 'jq -r ".name" {} | grep -E "YouTube|Zotero|OCR|Mendeley|Translator|Thesaurus|Speech input" && dirname {}' \;)
 
 # 循环遍历插件目录并删除它们
-for plugin in $plugins; do
+for plugin in $plugins
+do
     echo "$plugin"
     rm -rf "$plugin"
 done

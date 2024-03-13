@@ -20,8 +20,6 @@ sudo docker build -t fuyb/onlyoffice-unlimit:8.0.1.1 .
 
 ## run
 ```shell
-sudo rm -rf var/log/onlyoffice /var/www/onlyoffice /var/lib/onlyoffice /var/lib/rabbitmq /var/lib/redis /var/lib/postgresql
-
 sudo docker run -i -t -d --network=host --name onlyoffice --restart=always \
 -v /app/onlyoffice/DocumentServer/logs:/var/log/onlyoffice \
 -v /app/onlyoffice/DocumentServer/data:/var/www/onlyoffice/Data \
@@ -30,5 +28,4 @@ sudo docker run -i -t -d --network=host --name onlyoffice --restart=always \
 -v /app/onlyoffice/DocumentServer/redis:/var/lib/redis \
 -v /app/onlyoffice/DocumentServer/db:/var/lib/postgresql \
 fuyb/onlyoffice-unlimit:8.0.1.1
-
 ```

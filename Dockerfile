@@ -1,6 +1,9 @@
 # 镜像来源
 FROM xbeeant/oo-unlimit:8.0.1.1
 
+ENV TZ=Asia/Shanghai
+ENV JWT_ENABLED=false
+
 RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 RUN apt-get update \
     && apt-get install -y jq
@@ -22,15 +25,15 @@ RUN rm -rf *
 ADD ["onlyoffice-chinese-fonts/mini_fonts/*", "/usr/share/fonts/truetype/custom/fonts/"] 
 
 # 添加一些插件
-ADD plugin-html /var/www/onlyoffice/documentserver/sdkjs-plugins/html
-ADD plugin-autocomplete /var/www/onlyoffice/documentserver/sdkjs-plugins/autocomplete
-ADD plugin-doc2md /var/www/onlyoffice/documentserver/sdkjs-plugins/doc2md
-ADD plugin-wordscounter /var/www/onlyoffice/documentserver/sdkjs-plugins/wordscounter
+ADD sdkjs-plugins/sdkjs-plugins/content/html /var/www/onlyoffice/documentserver/sdkjs-plugins/html
+ADD sdkjs-plugins/sdkjs-plugins/content/autocomplete /var/www/onlyoffice/documentserver/sdkjs-plugins/autocomplete
+ADD sdkjs-plugins/sdkjs-plugins/content/doc2md /var/www/onlyoffice/documentserver/sdkjs-plugins/doc2md
+ADD sdkjs-plugins/sdkjs-plugins/content/wordscounter /var/www/onlyoffice/documentserver/sdkjs-plugins/wordscounter
 
 # 修正 plugin.[css|js] 引用问题
 RUN find /var/www/onlyoffice/documentserver/sdkjs-plugins -name "index.html" -type f -exec sed -i 's|https://onlyoffice.github.io/sdkjs-plugins/|../|g' {} \;
 
-# 修正hightlight js引用问题
+# 修正hightlight js引用问题（新版没有该问题）
 # RUN sed -i "s/https:\/\/ajax.googleapis.com\/ajax\/libs\/jquery\/2.2.2\/jquery.min.js/vendor\/jQuery-2.2.2-min\/jquery-v2.2.2-min.js/" /var/www/onlyoffice/documentserver/sdkjs-plugins/highlightcode/index.html
 
 # 修改文件缓存时间

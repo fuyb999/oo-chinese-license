@@ -1,5 +1,8 @@
 #!/bin/bash
 
+: ${BUILD_VERSION:="0.0.0"}
+: ${BUILD_NUMBER:=0}
+
 if [ -d "/opt/app/web-apps" ]; then
    if [ ! -d "/opt/app/web-apps/build/node_modules" ]; then
      rm -rf /opt/app/web-apps/build/*
@@ -15,5 +18,5 @@ if [ -d "/opt/app/sdkjs" ]; then
    cp -r /opt/build/sdkjs/* /opt/app/sdkjs/build/
  fi
  cd /opt/app/sdkjs/build && grunt
- cd ../ && make
+ cd ../ && make PRODUCT_VERSION=$BUILD_VERSION BUILD_NUMBER=$BUILD_NUMBER
 fi

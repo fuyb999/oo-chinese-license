@@ -2,6 +2,8 @@ FROM node:16.20.2-buster
 # FROM ubuntu:20.04
 
 #ENV TZ=Asia/Shanghai
+ENV BUILD_VERSION=0.0.0
+ENV BUILD_NUMBER=0
 
 # RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 RUN sed -i 's|deb.debian.org|mirrors.ustc.edu.cn|g' /etc/apt/sources.list

@@ -32,8 +32,10 @@ RUN cd /opt/build/web-apps/ \
 
 RUN npm cache clear --force
 RUN cd /opt/build/sdkjs/ \
-    && npm install --registry=http://registry.npmmirror.com \
-    && cd deserializer && npm install --registry=http://registry.npmmirror.com
+    && npm install --registry=http://registry.npmmirror.com
+
+RUN npm cache clear --force
+RUN cd /opt/build/sdkjs/deserializer && npm install --registry=http://registry.npmmirror.com
 
 # enable sh
 #RUN echo "dash dash/sh boolean false" | debconf-set-selections

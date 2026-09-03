@@ -29,3 +29,5 @@ sudo docker run -i -t -d --network=host --name onlyoffice --restart=always \
 -v /app/onlyoffice/DocumentServer/db:/var/lib/postgresql \
 fuyb/onlyoffice-unlimit:8.0.1.1
 ```
+
+186184848/documentserver:8.3.3

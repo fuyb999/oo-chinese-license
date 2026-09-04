@@ -30,4 +30,4 @@ sudo docker run -i -t -d --network=host --name onlyoffice --restart=always \
 fuyb/onlyoffice-unlimit:8.0.1.1
 ```
 
-186184848/documentserver:8.3.3
+arm64: 186184848/documentserver:8.3.3
